@@ -1,14 +1,18 @@
 import pandas as pd
 ratings = pd.read_csv('./datasets/ml-latest-small/ratings.csv')    
+print('ratings.head(20):')
 print(ratings.head(20))
 
 movies = pd.read_csv('./datasets/ml-latest-small/movies.csv') 
+print('movies.head(5):')
 print(movies.head(5))
 
 data = pd.merge(movies, ratings, on='movieId')
+print('data.head(5):')
 print(data.head(5))
 data = data[['userId','rating','movieId','title']].sort_values('userId').to_csv('./datasets/ml-latest-small/data.csv', index=False, encoding='utf8')
 files = pd.read_csv('./datasets/ml-latest-small/data.csv')
+print('files.head(5):')
 print(files.head(5))
 
 import csv
@@ -20,6 +24,7 @@ with open('./datasets/ml-latest-small/data.csv', encoding='utf8') as fp:
     for row in cr:
         # print(row)
         content.append(row)
+print('len(content), content[:2]:')
 print(len(content), content[:2])
 
 # from list to dictionary
@@ -30,6 +35,7 @@ for line in content[1:]:  # delete the first row
         data[line[0]] = {line[3]:line[1]}
     else:
         data[line[0]][line[3]] = line[1]
+print('len(data), data[\'101\']:')
 print(len(data), data['101'])
 
 from math import *
@@ -63,6 +69,7 @@ def top10_simliar(userID):
     return res[:10]
  
 res = top10_simliar('1')
+print('res:')
 print(res)
 
 def recommend(user):
@@ -77,4 +84,5 @@ def recommend(user):
     return recommendations[:10]  # return 10 movies with highest ratings
  
 Recommendations = recommend('1')
+print('Recommendations:')
 print(Recommendations)
