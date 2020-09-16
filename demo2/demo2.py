@@ -78,7 +78,7 @@ def recommend(user):
     for key in data1[user]:
         rating.append((key, data1[user][key]))
     rating.sort(key=lambda val: val[1], reverse=True)
-    Movie = rating[0][0]  # This is user likes most
+    Movie = rating[0][0]  # This is what the user likes most
     top10 = top10_simliar(Movie)
     res = []
     for x in top10:
