@@ -84,4 +84,4 @@ def recommend(lst):
     
     return UserCF | ItemCF
 
-print(recommend({'呼吸', '无人之岛（翻自 任然）', '水星记', '像鱼', '大鱼 - (动画电影《大鱼海棠》印象曲)', '千千阙歌(Live)', '心はいつもあなたのそばに Piano'}))
+# print(recommend({'呼吸', '无人之岛（翻自 任然）', '水星记', '像鱼', '大鱼 - (动画电影《大鱼海棠》印象曲)', '千千阙歌(Live)', '心はいつもあなたのそばに Piano'}))
