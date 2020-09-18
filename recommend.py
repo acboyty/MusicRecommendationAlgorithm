@@ -48,7 +48,7 @@ def most_similar_lst(lst):
     cur_lst, cur_dist = [], 15
     for lst_ in lst2music.keys():
         temp_dist = lst_dist(lst, lst2music[lst_])
-        if lst_ != lst and temp_dist < cur_dist:
+        if lst2music[lst_] != lst and temp_dist < cur_dist:
             cur_lst = lst2music[lst_]
             cur_dist = temp_dist
     return cur_lst, cur_dist
