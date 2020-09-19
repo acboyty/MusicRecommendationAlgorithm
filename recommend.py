@@ -1,15 +1,18 @@
+"""
+Build connection with MySQL database and provide recommendation function.
+"""
+
 import pandas as pd 
 
-df = pd.read_csv('./datasets/music-list/data_5950.csv', encoding='GB18030')  # wrong with GB2312, GB2312 < GBK < GB18030
-# print(f'df.shape: {df.shape}')
-# print(df.head())
-# print(df.tail())
+DbHandle = DataBaseHandle('127.0.0.1','root','68691102','recommend',3306)  # initialization
+
+music_lists = DbHandle.selectDb('select * from allsong')
 
 lst2music = {}  # music list to musics
 music2lst = {}  # music to music lists
-for i in range(len(df)):
-    music = df.iloc[i]['歌名']
-    lst = df.iloc[i]['歌单名称']
+for x in music_lists:
+    music = x[0]
+    lst = x[4]
     if lst not in lst2music:
         lst2music[lst] = {music}
     else:
@@ -22,6 +25,7 @@ for i in range(len(df)):
 # print('无人之岛（翻自 任然）:', music2lst['无人之岛（翻自 任然）'])
 # print(f'length of lst2music: {len(lst2music)}, length of music2lst: {len(music2lst)}')
 
+DbHandle.closeDb()
 
 def lst_dist(lst1, lst2):
     '''
@@ -84,4 +88,4 @@ def recommend(lst):
     
     return UserCF | ItemCF
 
-# print(recommend({'呼吸', '无人之岛（翻自 任然）', '水星记', '像鱼', '大鱼 - (动画电影《大鱼海棠》印象曲)', '千千阙歌(Live)', '心はいつもあなたのそばに Piano'}))
+print(recommend({'呼吸', '无人之岛（翻自 任然）', '水星记', '像鱼', '大鱼 - (动画电影《大鱼海棠》印象曲)', '千千阙歌(Live)', '心はいつもあなたのそばに Piano'}))
