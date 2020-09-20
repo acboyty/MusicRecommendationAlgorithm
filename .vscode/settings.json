@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\tao\\anaconda3\\envs\\tao\\python.exe",
+    "python.pythonPath": "C:\\Users\\Tao\\Anaconda3\\envs\\pytorch\\python.exe",
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": false,
     "python.linting.pylintEnabled": false,
