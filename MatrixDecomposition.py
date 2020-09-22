@@ -16,7 +16,7 @@ def getRatingMatrix(music_list):
     music_list is a List composed of input songs
     """
     ratingMatrix = np.zeros((len(lst2music)+1, len(music2lst)), dtype=np.float32)
-    # print(f'ratingMatrix.shape: {ratingMatrix.shape}')
+    print(f'ratingMatrix.shape: {ratingMatrix.shape}')
 
     music2num, num2music = {}, {}  # dict converting music and num
     cnt = 0
@@ -49,7 +49,7 @@ def matrixDecomposition(matrix, k):
         matrix_ = torch.mm(User, Item)
         # print(matrix.shape, matrix_.shape)
         loss = criterion(matrix_, torch.tensor(matrix))
-        # if cnt % 10 == 9:
+        # if cnt % 5 == 4:
         #     # print(matrix_[:5, :5])
         #     print(f'loss of {cnt} step: {loss.item()}')
         optimizer.zero_grad()
@@ -71,4 +71,4 @@ def recommend(music_list):
 
 
 # print('Matrix:', recommend({'呼吸', '无人之岛（翻自 任然）', '水星记', '像鱼', '大鱼 - (动画电影《大鱼海棠》印象曲)',
-        #    '千千阙歌(Live)', '心はいつもあなたのそばに Piano'}))
+#            '千千阙歌(Live)', '心はいつもあなたのそばに Piano'}))

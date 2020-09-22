@@ -12,8 +12,8 @@ def recommend(music_list):
     # Matrix
     Matrix = MatrixDecomposition.recommend(music_list)
     
-    print('CF:', CF)
-    print('Matrix:', Matrix)
+    print('CF:', CF, '\n')
+    print('Matrix:', Matrix, '\n')
     ret = CF | Matrix
     return ret
 
